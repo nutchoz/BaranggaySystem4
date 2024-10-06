@@ -1,0 +1,49 @@
+.navigation {
+	position: relative;
+	width: 100%;
+	height: 80px;
+	background: black;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.navigation .left {
+	width: 50%;
+	height: 100%;
+}
+
+.navigation .right {
+	display: flex;
+	justify-content: right;
+	align-items: center;
+	padding: 20px;
+	width: 50%;
+	height: 100%;
+}
+
+.navigation-link {
+	font-size: 1.5rem;
+	color:  white;
+	font-weight: bold;
+	text-decoration: none;
+	margin-left: 30px;
+}
+.navigation-link:hover {
+	color: #aaa;
+}
+
+.profile-pic {
+	height: 100%;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	object-fit: cover;
+
+	background: red;
+	margin-left: 20px;
+	cursor: pointer;
+}
+
+.profile-pic:hover {
+	transform: scale(1.1);
+}

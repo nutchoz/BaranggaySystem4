@@ -1,0 +1,89 @@
+
+.login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	background: #eee;
+}
+
+.login .login-card {
+	display: flex;
+	flex-direction: column;
+
+	position: relative;
+	width: 35%;
+	height: auto;
+	background: white;
+	border-radius: 20px;
+	box-shadow: 0 5px 5px #00000055;
+	padding: 30px;
+}
+
+
+.login .login-card .top {
+	text-align: left;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.login .login-card .line {
+	border-width: 1px;
+	width: 60%;
+}
+
+.login .login-card .input-login,
+.login .login-card .button-login {
+	position: relative;
+	width: 100%;
+	padding: 15px;
+	margin-top: 20px;
+	border: none;
+	outline: none;
+	border-radius: 20px;
+}
+
+
+.login .login-card .input-login {
+	border-bottom: 1px solid #555;
+	background: #fafafa;
+}
+
+.login .login-card .button-login {
+	background: black;
+	color: white;
+	font-size: 1.5rem;
+	border-bottom: 1px solid white;
+	box-shadow: 0 5px 5px #00000044;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+.login .login-card .button-login:hover {
+	background: #333;
+}
+
+.login .login-card .account-check {
+	margin-top: 30px;
+	font-size: 1.1rem;
+}
+
+.login .login-card .account-check > a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #555;
+}
+
+@media (max-width: 900px) {
+	.login .login-card {
+		width: 50%;
+	}
+}
+
+@media (max-width: 600px) {
+	.login .login-card {
+		width: 80%;
+	}
+}
