@@ -1,0 +1,114 @@
+.table-controls {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	padding: 10px;
+	background-color: #f1f1f1;
+	border-bottom: 1px solid #ddd;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+#searchInput,
+#requestFilter {
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	width: 45%;
+	font-size: 14px;
+}
+
+#searchBtn {
+	padding: 5px 20px;
+	background-color: #333;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 14px;
+}
+
+#searchBtn:hover {
+	background-color: #222;
+}
+
+.request-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+.request-table th,
+.request-table td {
+	padding: 8px;
+	border: 1px solid #ddd;
+	text-align: left;
+}
+
+.request-table th {
+	background-color: #5e5e5e;
+	color: white;
+	font-weight: bold;
+	align-items: center;
+}
+
+.request-table td:last-child {
+	text-align: center;
+}
+
+.request-table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+.request-table tbody tr:hover {
+	background-color: #f1f1f1;
+}
+
+.action-btn {
+	padding: 8px 12px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 13px;
+	margin: auto;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.details-btn {
+	background-color: #777777;
+	color: white;
+}
+
+.details-btn:hover {
+	background-color: #636363;
+}
+
+.approve-btn {
+	background-color: #38628f;
+	color: white;
+	font-weight: bold;
+}
+
+.approve-btn:hover {
+	background-color: #0056b3;
+}
+
+.disapprove-btn {
+	background-color: #8f3838;
+	color: white;
+	font-weight: bold;
+}
+
+.disapprove-btn:hover {
+	background-color: #b30000;
+}
+
+.complete-btn {
+	background-color: #388f64;
+	color: white;
+	font-weight: bold;
+}
+.complete-btn:hover {
+	background-color: #37ca81;
+}

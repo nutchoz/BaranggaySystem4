@@ -1,22 +1,72 @@
 <?php
-require_once ('../includes/functions.php');
+require_once('../includes/functions.php');
+session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+	$database = new MySQLDatabase();
 	$type = $_POST['type'];
-	if ($type === 'login')
-	{
+	if ($type === 'login') {
 		$username = $_POST["email"];
 		$password = $_POST["password"];
 
-		if ($username === 'admin' && $password === 'admin')
-			redirect_to('./admin/admin.php');
+		if ($username === 'admin' && $password === 'admin') {
+			$_SESSION['isLoggedIn'] = 'true';
+			redirect_to('./admin.php?on=home');
+		}
 
-		if (login($username, $password))
+		if (login($username)) {
+			$account = $_SESSION['account'];
+
+			if (!password_verify($password, $account['password'])) {
+				$_SESSION['error'] = 'Login error. Maybe wrong email or password?';
+				redirect_to('./registration.php');
+			}
+
+			if (!$account['verified']) {
+				$_SESSION['error'] = 'Login error. Your account is not verified.';
+				redirect_to('./index.php');
+			}
+			$_SESSION['isLoggedIn'] = 'true';
+			$_SESSION['success'] = "Login successful! Welcome {$account['lastName']}";
 			redirect_to('./index.php');
+		}
 
-		redirect_to('./registration.php?error=true');
+		$_SESSION['error'] = 'Login error. Maybe wrong email or password?';
+		redirect_to('./registration.php');
+
+	} elseif ($type === 'register') {
+		$firstName = $_POST['first_name'];
+		$middleName = $_POST['middle_name'];
+		$lastName = $_POST['last_name'];
+		$email = $_POST['email'];
+		$password = $_POST['password'];
+
+		SQLFunction::registerAccount($firstName, $middleName, $lastName, $email, password_hash($password, PASSWORD_BCRYPT));
+		$_SESSION['success'] = 'Registration successful! Please wait for admin to verify your account.';
+		redirect_to('./registration.php');
+
+	} elseif ($type === 'verify') {
+		$email = $_POST['email'];
+		$code = $_POST['code'];
+
+		if (SQLFunction::verifyAccount($email, $code)) {
+			$_SESSION['success'] = 'Account verified successfully! You can now log in.';
+			redirect_to('./registration.php');
+		} else {
+			$_SESSION['error'] = 'Invalid email or verification code. Please try again.';
+			redirect_to('./registration.php?on=verify');
+		}
+
+	} elseif ($type === "send-code") {
+		$email = $_POST['email'];
+		if (SQLFunction::sendCode($email))
+			$_SESSION['success'] = "Verification code to $email sent successfully!";
+		else
+			$_SESSION['error'] = "Failed to send verification code to $email.";
+		redirect_to('./admin.php?on=accounts');
 	}
+
 	// elseif ($type === 'register')
 	// {
 	// 	$full_name = $_POST["full_name"];
@@ -112,5 +162,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	// 	redirect_to('./users.php?finish=true');
 	// }
 }
+
+unset($_SESSION['account']);
+unset($_SESSION['isLoggedIn']);
 redirect_to('./index.php');
 ?>

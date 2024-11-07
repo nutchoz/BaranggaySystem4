@@ -1,0 +1,10 @@
+.container-completed {
+	width: 80%;
+	margin: 20px auto;
+	height: calc(100% - 80px - 80px);
+	max-height: calc(100% - 80px - 80px);
+	overflow-y: auto;
+	padding-right: 10px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+}
