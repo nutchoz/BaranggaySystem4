@@ -43,6 +43,9 @@ if (isset($_SESSION['success'])) {
 			case 'about':
 				include_layout_template("layouts/about.php");
 				break;
+			case 'profile':
+				include_layout_template("layouts/profile.php");
+				break;
 			case 'home':
 			default:
 				include_layout_template("layouts/home.php");

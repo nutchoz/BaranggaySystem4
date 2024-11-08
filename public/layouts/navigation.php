@@ -4,6 +4,7 @@
 		<a class="navigation-link" href="dashboard.php?on=home">HOME</a>
 		<a class="navigation-link" href="dashboard.php?on=about">ABOUT</a>
 		<a class="navigation-link" href="dashboard.php?on=service">SERVICES</a>
+		<a class="navigation-link" href="dashboard.php?on=profile">PROFILE</a>
 		<a class="navigation-link" href="registration.php">LOGOUT</a>
 
 		<img class="profile-pic" src="">

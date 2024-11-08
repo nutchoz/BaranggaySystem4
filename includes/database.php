@@ -180,7 +180,7 @@ class SQLFunction
 	public static function getAllAccounts()
 	{
 		$database = new MySQLDatabase();
-		$result = $database->query("SELECT * FROM users WHERE verified = FALSE AND code = ''");
+		$result = $database->query("SELECT * FROM users WHERE verified = FALSE");
 
 		$accounts = [];
 		while ($row = $result->fetch_assoc()) {
