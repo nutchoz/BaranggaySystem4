@@ -10,17 +10,48 @@
                     <button class="take-service">Take this service!</button>
                     <button class="take-service disabled">Track</button>
                 </div>
-
             </div>
             <div class="service-items">
+                <img src="../assets/baranggayClearance.png" class="service-image" />
+                <input type="hidden" value="baranggayClearance">
+                <div class="service-title">Baranggay Clearance</div>
+                <div class="buttons-service"
+                    style="display: flex; width: 90%; height: 100%; gap: 10px; margin-left: 5%;">
+                    <button class="take-service">Take this service!</button>
+                    <button class="take-service disabled">Track</button>
+                </div>
             </div>
             <div class="service-items">
+                <img src="../assets/baranggayClearance.png" class="service-image" />
+                <input type="hidden" value="baranggayClearance">
+                <div class="service-title">Baranggay Clearance</div>
+                <div class="buttons-service"
+                    style="display: flex; width: 90%; height: 100%; gap: 10px; margin-left: 5%;">
+                    <button class="take-service">Take this service!</button>
+                    <button class="take-service disabled">Track</button>
+                </div>
             </div>
         </div>
         <div class="service-cols">
             <div class="service-items">
+                <img src="../assets/baranggayClearance.png" class="service-image" />
+                <input type="hidden" value="baranggayClearance">
+                <div class="service-title">Baranggay Clearance</div>
+                <div class="buttons-service"
+                    style="display: flex; width: 90%; height: 100%; gap: 10px; margin-left: 5%;">
+                    <button class="take-service">Take this service!</button>
+                    <button class="take-service disabled">Track</button>
+                </div>
             </div>
             <div class="service-items">
+                <img src="../assets/baranggayClearance.png" class="service-image" />
+                <input type="hidden" value="baranggayClearance">
+                <div class="service-title">Baranggay Clearance</div>
+                <div class="buttons-service"
+                    style="display: flex; width: 90%; height: 100%; gap: 10px; margin-left: 5%;">
+                    <button class="take-service">Take this service!</button>
+                    <button class="take-service disabled">Track</button>
+                </div>
             </div>
         </div>
     </div>
