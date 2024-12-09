@@ -1,5 +1,5 @@
 <?php
-$service = SQLFunction::getAllPendingServices();
+$service = SQLFunction::getAllCompletedServices();
 ?>
 
 <div class="container-approved mt-4 px-5 justify-content-center align-items-center"
@@ -26,9 +26,8 @@ $service = SQLFunction::getAllPendingServices();
                 <th>Request ID</th>
                 <th>Client Name</th>
                 <th>Service Name</th>
-                <th>Status</th>
-                <th>Request Type</th>
-                <th>Actions</th>
+                <th>Feedback</th>
+                <th>Rating</th>
             </tr>
         </thead>
         <tbody id="tableBody">
@@ -73,22 +72,18 @@ $service = SQLFunction::getAllPendingServices();
         tableBody.innerHTML = '';
 
         requestsToRender.forEach(request => {
-
-            let actionButtons = `
-            <button style="background-color: #66ff77" class="btn action-btn details-btn" data-id="${request.id}">DETAILS</button>
-            <button class="btn btn-success action-btn complete-btn" data-id="${request.id}">APPROVE</button>
-        `;
-
+            if (request.alreadyFeedback == 1) {
+                return;
+            }
             const row = `
-            <tr>
-                <td>${request.id}</td>
-                <td>${request.userName}</td>
-                <td>${request.name}</td>
-                <td>${request.status}</td>
-                <td>${request.type}</td>
-                <td>${actionButtons}</td>
-            </tr>
-        `;
+                <tr>
+                    <td>${request.id}</td>
+                    <td>${request.userName}</td>
+                    <td>${request.name}</td>
+                    <td>${request.feedback}</td>
+                    <td>${request.rating}</td>
+                </tr>
+            `;
             tableBody.insertAdjacentHTML('beforeend', row);
         });
 
@@ -100,28 +95,6 @@ $service = SQLFunction::getAllPendingServices();
             });
         });
 
-        document.querySelectorAll('.complete-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                const requestId = this.getAttribute('data-id');
-                updateRequestToApprove(requestId);
-            });
-        });
-    }
-
-    function updateRequestToApprove(requestId) {
-        const formData = new FormData();
-        formData.append('id', requestId);
-
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'axios/approve.php', true);
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                window.location.reload();
-            } else {
-                window.location.reload();
-            }
-        };
-        xhr.send(formData);
     }
 
     function showDetails(request) {
@@ -130,18 +103,18 @@ $service = SQLFunction::getAllPendingServices();
             const info = JSON.parse(request.information);
             if (typeof info === 'object') {
                 formattedInfo = Object.entries(info).map(([key, value]) => {
-                    return `<p><strong>${key}:</strong> ${value}</p> `;
+                    return `<p><strong>${key}:</strong> ${value}</p>`;
                 }).join('');
             } else {
-                formattedInfo = `<p><strong>Information:</strong> ${info}</p> `;
+                formattedInfo = `<p><strong>Information:</strong> ${info}</p>`;
             }
         } catch (e) {
-            formattedInfo = `<p><strong>Information:</strong>Invalid data format</p> `;
+            formattedInfo = `<p><strong>Information:</strong> Invalid data format</p>`;
         }
 
         const modalBody = document.getElementById('modalBody');
         modalBody.innerHTML = `
-                <h5> Service Details for Request ID: ${request.id}</h5>
+            <h5>Service Details for Request ID: ${request.id}</h5>
             <p><strong>Name:</strong> ${request.name}</p>
             <p><strong>Status:</strong> ${request.status}</p>
             <p><strong>Type:</strong> ${request.type}</p>
@@ -157,9 +130,9 @@ $service = SQLFunction::getAllPendingServices();
     function showTracking(request) {
         const modalBody = document.getElementById('modalBody');
         modalBody.innerHTML = `
-                < h5 > Tracking Information for Request ID: ${request.id}</h5 >
-                    <p><strong>Status:</strong> ${request.track}</p>
-            `;
+        <h5>Tracking Information for Request ID: ${request.id}</h5>
+        <p><strong>Status:</strong> ${request.track}</p>
+    `;
         const serviceModal = new bootstrap.Modal(document.getElementById('serviceModal'));
         serviceModal.show();
     }
@@ -174,7 +147,7 @@ $service = SQLFunction::getAllPendingServices();
         for (let i = 1; i <= pageCount; i++) {
             const pageItem = document.createElement('li');
             pageItem.classList.add('page-item');
-            pageItem.innerHTML = `< a style = "background-color: #2DB13DFF; color: white" class="page-link" href = "#" > ${i}</a > `;
+            pageItem.innerHTML = `<a style="background-color: #2DB13DFF; color: white" class="page-link" href="#">${i}</a>`;
             pageItem.querySelector('a').addEventListener('click', function () {
                 currentPage = i;
                 updateTableAndPagination();
@@ -237,7 +210,7 @@ $service = SQLFunction::getAllPendingServices();
         const printWindow = window.open('', '_blank');
         printWindow.document.open();
         printWindow.document.write(`
-                < html >
+        <html>
             <head>
                 <title>Print Table</title>
                 <style>
@@ -256,7 +229,7 @@ $service = SQLFunction::getAllPendingServices();
                 </style>
             </head>
             <body>${printContent}</body>
-        </html >
+        </html>
         `);
         printWindow.document.close();
         printWindow.print();

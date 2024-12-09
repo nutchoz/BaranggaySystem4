@@ -15,7 +15,6 @@ if (!$session->has('isLoggedIn') || $session->get('isLoggedIn') !== 'true') {
     "admin/css/approved",
     "admin/css/completed",
     "admin/css/accounts",
-    "admin/css/tabulator",
     "css/bottom",
     "css/modal"
 ]); ?>
@@ -36,15 +35,12 @@ if (isset($_SESSION['success'])) {
 <body>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <div class="main-container">
+    <div class="main-container d-flex">
         <?php include_layout_template("admin/navigation.php") ?>
 
         <?php
         $on = $_GET['on'] ?? 'home';
         switch ($on) {
-            case 'requests':
-                include_layout_template("admin/requests.php");
-                break;
             case 'approved':
                 include_layout_template("admin/approved.php");
                 break;
@@ -54,16 +50,17 @@ if (isset($_SESSION['success'])) {
             case 'accounts':
                 include_layout_template("admin/accounts.php");
                 break;
-
-            case 'home':
+            case 'feedback':
+                include_layout_template("admin/feedback.php");
+                break;
+            case 'requests':
             default:
-                include_layout_template("admin/home.php");
+                include_layout_template("admin/requests.php");
                 break;
         }
         ?>
-        <?php include_layout_template("layouts/bottom.php") ?>
     </div>
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

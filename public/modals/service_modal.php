@@ -11,34 +11,11 @@
         justify-content: center;
         align-items: center;
     }
-
-    .service-modal-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        width: 400px;
-        text-align: center;
-    }
-
-    .service-modal-close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
-
-    .service-modal-close:hover,
-    .service-modal-close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-    }
 </style>
 
 <div id="service-modal" class="service-modal">
     <div class="service-modal-content">
         <span class="service-modal-close">&times;</span>
-        <!-- <h2 id="modalTitle">Service Title</h2> -->
 
         <div id="dynamicForm">
 

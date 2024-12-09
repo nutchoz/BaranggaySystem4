@@ -1,9 +1,9 @@
 <?php
-$service = SQLFunction::getAllPendingServices();
+$service = SQLFunction::getAllMyService();
 ?>
 
 <div class="container-approved mt-4 px-5 justify-content-center align-items-center"
-    style="width: 90vw; min-height: 70vh; padding: 20px 0; ">
+    style="width: 80vw; min-height: 70vh; margin-left: calc(50% - 40vw); ">
     <div class="table-controls d-flex justify-content-between align-items-center mb-4">
         <input type="text" id="searchInput" class="form-control w-25" placeholder="Search by name or ID">
         <select id="requestFilter" class="form-select w-auto">
@@ -24,9 +24,10 @@ $service = SQLFunction::getAllPendingServices();
         <thead>
             <tr>
                 <th>Request ID</th>
-                <th>Client Name</th>
                 <th>Service Name</th>
                 <th>Status</th>
+                <th>Date Approved At</th>
+                <th>Date Completed At</th>
                 <th>Request Type</th>
                 <th>Actions</th>
             </tr>
@@ -59,6 +60,47 @@ $service = SQLFunction::getAllPendingServices();
     </div>
 </div>
 
+<!-- Feedback Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feedbackModalLabel">Submit Feedback</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="feedbackForm">
+                    <input type="hidden" name="requestId" id="requestId">
+
+                    <div class="mb-3">
+                        <label for="requestTitle" class="form-label">Request Title</label>
+                        <input type="text" class="form-control" id="requestTitle" disabled>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="feedback" class="form-label">Your Feedback</label>
+                        <textarea class="form-control" id="feedback" rows="3" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <select class="form-select" id="rating" required>
+                            <option value="Poor">1 - Poor</option>
+                            <option value="Fair">2 - Fair</option>
+                            <option value="Good">3 - Good</option>
+                            <option value="Very Good">4 - Very Good</option>
+                            <option value="Excellent">5 - Excellent</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <script>
     const requests = <?php echo json_encode($service); ?>;
@@ -73,18 +115,22 @@ $service = SQLFunction::getAllPendingServices();
         tableBody.innerHTML = '';
 
         requestsToRender.forEach(request => {
+            const isCompleted = request.status === 'Complete';
 
             let actionButtons = `
-            <button style="background-color: #66ff77" class="btn action-btn details-btn" data-id="${request.id}">DETAILS</button>
-            <button class="btn btn-success action-btn complete-btn" data-id="${request.id}">APPROVE</button>
-        `;
+                <button style="background-color: #66ff77" class="btn action-btn details-btn" data-id="${request.id}">DETAILS</button>
+                ${isCompleted ? `<button class="btn btn-success action-btn complete-btn" data-id="${request.id}">VIEW</button>` : ''}
+                ${!isCompleted ? `<button style="background-color: #2DB13DFF; color: white" class="btn action-btn track-btn" data-id="${request.id}">TRACK</button>` : ''}
+                ${isCompleted && request.alreadyFeedback == "0" ? `<button class="btn btn-success action-btn feedback-btn" data-id="${request.id}">FEEDBACK</button>` : ''}
+            `;
 
             const row = `
             <tr>
                 <td>${request.id}</td>
-                <td>${request.userName}</td>
                 <td>${request.name}</td>
                 <td>${request.status}</td>
+                <td>${request.dateAccepted ? new Date(request.dateAccepted).toLocaleDateString() : 'NOT ACCEPTED'}</td>
+                <td>${request.dateCompleted ? new Date(request.dateCompleted).toLocaleDateString() : 'NOT COMPLETED'}</td>
                 <td>${request.type}</td>
                 <td>${actionButtons}</td>
             </tr>
@@ -100,29 +146,87 @@ $service = SQLFunction::getAllPendingServices();
             });
         });
 
+        document.querySelectorAll('.track-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const requestId = this.getAttribute('data-id');
+                const request = requests.find(req => req.id == requestId);
+                showTracking(request);
+            });
+        });
+
         document.querySelectorAll('.complete-btn').forEach(button => {
             button.addEventListener('click', function () {
                 const requestId = this.getAttribute('data-id');
-                updateRequestToApprove(requestId);
+                const request = requests.find(req => req.id == requestId);
+                showDetails(request);
+            });
+        });
+
+        document.querySelectorAll('.feedback-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const requestId = this.getAttribute('data-id');
+                const request = requests.find(req => req.id == requestId);
+                showFeedbackModal(request);
             });
         });
     }
 
-    function updateRequestToApprove(requestId) {
+    function showFeedbackModal(request) {
+        document.getElementById('requestId').value = request.id;
+        document.getElementById('requestTitle').value = request.name;
+
+        var feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+        feedbackModal.show();
+    }
+
+    // document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+    //     e.preventDefault();
+    //     const requestId = document.getElementById('requestId').value;
+    //     const feedback = document.getElementById('feedback').value;
+    //     const rating = document.getElementById('rating').value;
+    //     console.log(`Request ID: ${requestId}, Feedback: ${feedback}, Rating: ${rating}`);
+    //     var feedbackModal = bootstrap.Modal.getInstance(document.getElementById('feedbackModal'));
+    //     feedbackModal.hide();
+    //     document.getElementById('feedbackForm').reset();
+    // });
+
+    document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Get form values
+        const requestId = document.getElementById('requestId').value;
+        const feedback = document.getElementById('feedback').value;
+        const rating = document.getElementById('rating').value;
+
         const formData = new FormData();
-        formData.append('id', requestId);
+        formData.append('requestId', requestId);
+        formData.append('feedback', feedback);
+        formData.append('rating', rating);
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'axios/approve.php', true);
+        xhr.open('POST', 'axios/feedback.php', true);
+
         xhr.onload = function () {
             if (xhr.status === 200) {
-                window.location.reload();
+                const response = JSON.parse(xhr.responseText);
+                if (response.status === 'success') {
+                    var feedbackModal = bootstrap.Modal.getInstance(document.getElementById('feedbackModal'));
+                    feedbackModal.hide();
+                    document.getElementById('feedbackForm').reset();
+
+                    alert('Feedback submitted successfully!');
+                    window.location.reload();
+                } else {
+                    alert('Error submitting feedback: ' + response.message);
+                }
             } else {
-                window.location.reload();
+                alert('Failed to submit feedback. Please try again.');
             }
         };
         xhr.send(formData);
-    }
+    });
+
+
 
     function showDetails(request) {
         let formattedInfo = '';
@@ -130,18 +234,18 @@ $service = SQLFunction::getAllPendingServices();
             const info = JSON.parse(request.information);
             if (typeof info === 'object') {
                 formattedInfo = Object.entries(info).map(([key, value]) => {
-                    return `<p><strong>${key}:</strong> ${value}</p> `;
+                    return `<p><strong>${key}:</strong> ${value}</p>`;
                 }).join('');
             } else {
-                formattedInfo = `<p><strong>Information:</strong> ${info}</p> `;
+                formattedInfo = `<p><strong>Information:</strong> ${info}</p>`;
             }
         } catch (e) {
-            formattedInfo = `<p><strong>Information:</strong>Invalid data format</p> `;
+            formattedInfo = `<p><strong>Information:</strong> Invalid data format</p>`;
         }
 
         const modalBody = document.getElementById('modalBody');
         modalBody.innerHTML = `
-                <h5> Service Details for Request ID: ${request.id}</h5>
+            <h5>Service Details for Request ID: ${request.id}</h5>
             <p><strong>Name:</strong> ${request.name}</p>
             <p><strong>Status:</strong> ${request.status}</p>
             <p><strong>Type:</strong> ${request.type}</p>
@@ -157,9 +261,9 @@ $service = SQLFunction::getAllPendingServices();
     function showTracking(request) {
         const modalBody = document.getElementById('modalBody');
         modalBody.innerHTML = `
-                < h5 > Tracking Information for Request ID: ${request.id}</h5 >
-                    <p><strong>Status:</strong> ${request.track}</p>
-            `;
+        <h5>Tracking Information for Request ID: ${request.id}</h5>
+        <p><strong>Status:</strong> ${request.track}</p>
+    `;
         const serviceModal = new bootstrap.Modal(document.getElementById('serviceModal'));
         serviceModal.show();
     }
@@ -174,7 +278,7 @@ $service = SQLFunction::getAllPendingServices();
         for (let i = 1; i <= pageCount; i++) {
             const pageItem = document.createElement('li');
             pageItem.classList.add('page-item');
-            pageItem.innerHTML = `< a style = "background-color: #2DB13DFF; color: white" class="page-link" href = "#" > ${i}</a > `;
+            pageItem.innerHTML = `<a style="background-color: #2DB13DFF; color: white" class="page-link" href="#">${i}</a>`;
             pageItem.querySelector('a').addEventListener('click', function () {
                 currentPage = i;
                 updateTableAndPagination();
@@ -237,7 +341,7 @@ $service = SQLFunction::getAllPendingServices();
         const printWindow = window.open('', '_blank');
         printWindow.document.open();
         printWindow.document.write(`
-                < html >
+        <html>
             <head>
                 <title>Print Table</title>
                 <style>
@@ -256,7 +360,7 @@ $service = SQLFunction::getAllPendingServices();
                 </style>
             </head>
             <body>${printContent}</body>
-        </html >
+        </html>
         `);
         printWindow.document.close();
         printWindow.print();

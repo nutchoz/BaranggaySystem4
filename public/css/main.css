@@ -4,6 +4,7 @@
 	box-sizing: border-box;
 	font-family: "Arial";
 	user-select: none;
+	overflow-x: hidden;
 }
 
 .main-container {

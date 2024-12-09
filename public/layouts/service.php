@@ -1,61 +1,96 @@
-<div class="container-service">
-    <div class="service-rows">
-        <div class="service-cols">
-            <div class="service-items">
-                <img src="../assets/baranggayClearance.png" class="service-image" />
-                <input type="hidden" value="baranggayClearance">
-                <div class="service-title">Baranggay Clearance</div>
-                <div class="buttons-service"
-                    style="display: flex; width: 90%; height: 100%; gap: 10px; margin-left: 5%;">
-                    <button class="take-service">Take this service!</button>
-                    <button class="take-service disabled">Track</button>
-                </div>
-            </div>
-            <div class="service-items">
-                <img src="../assets/baranggayClearance.png" class="service-image" />
-                <input type="hidden" value="baranggayClearance">
-                <div class="service-title">Baranggay Clearance</div>
-                <div class="buttons-service"
-                    style="display: flex; width: 90%; height: 100%; gap: 10px; margin-left: 5%;">
-                    <button class="take-service">Take this service!</button>
-                    <button class="take-service disabled">Track</button>
-                </div>
-            </div>
-            <div class="service-items">
-                <img src="../assets/baranggayClearance.png" class="service-image" />
-                <input type="hidden" value="baranggayClearance">
-                <div class="service-title">Baranggay Clearance</div>
-                <div class="buttons-service"
-                    style="display: flex; width: 90%; height: 100%; gap: 10px; margin-left: 5%;">
-                    <button class="take-service">Take this service!</button>
-                    <button class="take-service disabled">Track</button>
+<div class="container-service container py-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        <!-- Service Item 1 -->
+        <div class="col">
+            <div class="card h-100 text-center">
+                <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
+                    alt="Baranggay Clearance">
+                <div class="card-body service-items">
+                    <h5 class="card-title">Baranggay Clearance</h5>
+                    <input type="hidden" value="baranggayClearance">
+                    <p class="card-text">This service provides official clearance from the barangay.</p>
+                    <div class="d-flex justify-content-center gap-2 buttons-service">
+                        <button class="btn btn-success take-service">Take this service!</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="service-cols">
-            <div class="service-items">
-                <img src="../assets/baranggayClearance.png" class="service-image" />
-                <input type="hidden" value="baranggayClearance">
-                <div class="service-title">Baranggay Clearance</div>
-                <div class="buttons-service"
-                    style="display: flex; width: 90%; height: 100%; gap: 10px; margin-left: 5%;">
-                    <button class="take-service">Take this service!</button>
-                    <button class="take-service disabled">Track</button>
+        <!-- Service Item 2 -->
+        <div class="col">
+            <div class="card h-100 text-center">
+                <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
+                    alt="Baranggay Clearance">
+                <div class="card-body service-items">
+                    <h5 class="card-title">Baranggay Clearance</h5>
+                    <input type="hidden" value="baranggayClearance">
+                    <p class="card-text">This service provides official clearance from the barangay.</p>
+                    <div class="d-flex justify-content-center gap-2 buttons-service">
+                        <button class="btn btn-success take-service">Take this service!</button>
+                    </div>
                 </div>
             </div>
-            <div class="service-items">
-                <img src="../assets/baranggayClearance.png" class="service-image" />
-                <input type="hidden" value="baranggayClearance">
-                <div class="service-title">Baranggay Clearance</div>
-                <div class="buttons-service"
-                    style="display: flex; width: 90%; height: 100%; gap: 10px; margin-left: 5%;">
-                    <button class="take-service">Take this service!</button>
-                    <button class="take-service disabled">Track</button>
+        </div>
+        <!-- Service Item 3 -->
+        <div class="col">
+            <div class="card h-100 text-center">
+                <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
+                    alt="Baranggay Clearance">
+                <div class="card-body service-items">
+                    <h5 class="card-title">Baranggay Clearance</h5>
+                    <input type="hidden" value="baranggayClearance">
+                    <p class="card-text">This service provides official clearance from the barangay.</p>
+                    <div class="d-flex justify-content-center gap-2 buttons-service">
+                        <button class="btn btn-success take-service">Take this service!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Service Item 4 -->
+        <div class="col">
+            <div class="card h-100 text-center">
+                <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
+                    alt="Baranggay Clearance">
+                <div class="card-body service-items">
+                    <h5 class="card-title">Baranggay Clearance</h5>
+                    <input type="hidden" value="baranggayClearance">
+                    <p class="card-text">This service provides official clearance from the barangay.</p>
+                    <div class="d-flex justify-content-center gap-2 buttons-service">
+                        <button class="btn btn-success take-service">Take this service!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Service Item 5 -->
+        <div class="col">
+            <div class="card h-100 text-center">
+                <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
+                    alt="Baranggay Clearance">
+                <div class="card-body service-items">
+                    <h5 class="card-title">Baranggay Clearance</h5>
+                    <input type="hidden" value="baranggayClearance">
+                    <p class="card-text">This service provides official clearance from the barangay.</p>
+                    <div class="d-flex justify-content-center gap-2 buttons-service">
+                        <button class="btn btn-success take-service">Take this service!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Service Item 6 -->
+        <div class="col">
+            <div class="card h-100 text-center">
+                <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
+                    alt="Baranggay Clearance">
+                <div class="card-body service-items">
+                    <h5 class="card-title">Baranggay Clearance</h5>
+                    <input type="hidden" value="baranggayClearance">
+                    <p class="card-text">This service provides official clearance from the barangay.</p>
+                    <div class="d-flex justify-content-center gap-2 buttons-service">
+                        <button class="btn btn-success take-service">Take this service!</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 
@@ -88,6 +123,9 @@
         });
     });
 
+    function closeForm() {
+        modal.style.display = 'none';
+    }
     closeBtn.onclick = function () {
         modal.style.display = 'none';
     };

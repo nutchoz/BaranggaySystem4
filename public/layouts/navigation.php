@@ -1,10 +1,15 @@
 <div class="navigation">
-	<div class="left"></div>
+	<div class="left">
+		<img src="assets/logo.png" style="height: calc(100% - 10px); width: auto; margin-top: 5px; margin-left: 20px;
+				backdrop-filter: drop-shadow(0 5px 20px black);" />
+		<div class="left-title">BARANGGAY LECHERIA</div>
+	</div>
 	<div class="right">
 		<a class="navigation-link" href="dashboard.php?on=home">HOME</a>
-		<a class="navigation-link" href="dashboard.php?on=about">ABOUT</a>
+		<!-- <a class="navigation-link" href="dashboard.php?on=about">ABOUT</a> -->
 		<a class="navigation-link" href="dashboard.php?on=service">SERVICES</a>
-		<a class="navigation-link" href="dashboard.php?on=profile">PROFILE</a>
+		<a class="navigation-link" href="dashboard.php?on=allOrder">ORDERS</a>
+		<!-- <a class="navigation-link" href="dashboard.php?on=profile">PROFILE</a> -->
 		<a class="navigation-link" href="registration.php">LOGOUT</a>
 
 		<img class="profile-pic" src="">

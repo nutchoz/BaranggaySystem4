@@ -1,5 +1,5 @@
 <style>
-    .register-card {
+    .login-card {
         max-width: 500px;
         width: 100%;
         padding: 30px;
@@ -8,13 +8,13 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .button-register {
+    .button-login {
         background-color: #28a745;
         border: none;
         width: 100%;
     }
 
-    .button-register:hover {
+    .button-login:hover {
         background-color: #218838;
     }
 
@@ -47,28 +47,30 @@
 <div class="bg-image"></div>
 
 <div class="d-flex justify-content-center align-items-center min-vh-100">
-    <div class="register-card">
-        <form method="post" action="redirect.php">
-            <h1 class="text-center mb-4 text-success">Verify Account</h1>
+    <div class="login-card">
+        <form method="post" action="password-reset.php">
+            <h1 class="text-center mb-4 text-success">Reset Password</h1>
             <hr>
 
+            <input type="hidden" name="reset-password" value="true">
+            <input type="hidden" name="email" value="<?php echo (isset($_GET['email']) ? $_GET['email'] : ''); ?>" />
+
             <div class="mb-3">
-                <input class="form-control" type="email" name="email" placeholder="Email" required>
+                <input class="form-control" type="text" name="code" placeholder="Enter the code" required>
             </div>
             <div class="mb-3">
-                <input class="form-control" type="text" name="code" placeholder="Enter code" required>
+                <input class="form-control" type="password" name="new-password" placeholder="Enter your new password"
+                    required>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="password" name="confirm-password"
+                    placeholder="Confirm your new password" required>
             </div>
 
-            <input type="hidden" name="type" value="verify">
-
-            <button class="btn button-register mb-3" type="submit">VERIFY</button>
-
-            <div class="text-center">
-                <strong>Or</strong>
-            </div>
+            <button class="btn button-login mb-3" type="submit">RESET PASSWORD</button>
 
             <div class="text-center mt-3">
-                Already have an account? <a href="registration.php" class="account-check">SIGN IN</a>
+                <a href="registration.php?on=login" class="account-check">Back to Login</a>
             </div>
         </form>
     </div>

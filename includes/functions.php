@@ -31,8 +31,6 @@ function register($full_name, $username, $email, $password)
 function login($username)
 {
 	$user = SQLFunction::loginAccount($username);
-
-
 	if ($user == null)
 		return false;
 
@@ -40,6 +38,16 @@ function login($username)
 	$session->set('account', $user);
 	return true;
 }
+
+function isUserExists($username)
+{
+	$user = SQLFunction::loginAccount($username);
+	if ($user == null)
+		return false;
+	return true;
+}
+
+
 
 function createHeader($title, $hrefs)
 {
@@ -55,6 +63,7 @@ function createHeader($title, $hrefs)
 		echo "<link rel='stylesheet' type='text/css' href='$safeHref.css'>";
 	}
 
+	echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">';
 	echo "</head>";
 }
 

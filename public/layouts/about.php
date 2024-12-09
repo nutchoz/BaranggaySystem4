@@ -1,6 +1,9 @@
 <div class="container-about">
     <div class="about-content">
-        <img class="about-image" src="" />
+        <iframe class="about-image"
+            src="https://www.google.com/maps/embed?pb=!3m2!1sen!2sph!4v1733476243696!5m2!1sen!2sph!6m8!1m7!1s5tkOd6vwjFRoaXFArmOoHA!2m2!1d14.20296261883888!2d121.1634438660724!3f96.45498702487319!4f-17.11984734163586!5f0.7820865974627469"
+            width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="about-description">
             <b>
                 <h1>BARANGGAY LECHERIA SYSTEM</h1>

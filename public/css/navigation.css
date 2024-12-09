@@ -2,7 +2,8 @@
 	position: relative;
 	width: 100%;
 	height: 80px;
-	background: black;
+	background: rgb(2, 58, 2);
+	background: linear-gradient(to right, rgb(2, 58, 2), green);
 
 	display: flex;
 	justify-content: space-between;
@@ -11,16 +12,26 @@
 
 .navigation-link.active {
 	pointer-events: none;
-	color: gray;
+	color: rgb(49, 168, 69);
 	cursor: default;
 	text-decoration: none;
+	text-shadow: 0 1px 1px black;
 }
 
 .navigation .left {
+	display: flex;
 	width: 50%;
 	height: 100%;
 }
-
+.left-title {
+	font-size: 3rem;
+	font-weight: bold;
+	display: flex;
+	align-items: center;
+	margin-left: 20px;
+	color: rgb(106, 233, 134);
+	text-shadow: 0 5px 5px black;
+}
 .navigation .right {
 	display: flex;
 	justify-content: right;
@@ -38,7 +49,7 @@
 	margin-left: 30px;
 }
 .navigation-link:hover {
-	color: #aaa;
+	color: #53d47a;
 }
 
 .profile-pic {
