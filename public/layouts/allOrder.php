@@ -229,33 +229,41 @@ $service = SQLFunction::getAllMyService();
 
 
     function showDetails(request) {
-        let formattedInfo = '';
-        try {
-            const info = JSON.parse(request.information);
-            if (typeof info === 'object') {
-                formattedInfo = Object.entries(info).map(([key, value]) => {
-                    return `<p><strong>${key}:</strong> ${value}</p>`;
-                }).join('');
-            } else {
-                formattedInfo = `<p><strong>Information:</strong> ${info}</p>`;
-            }
-        } catch (e) {
-            formattedInfo = `<p><strong>Information:</strong> Invalid data format</p>`;
+    let formattedInfo = '';
+    try {
+        const info = JSON.parse(request.information);
+        if (typeof info === 'object') {
+            formattedInfo = Object.entries(info).map(([key, value]) => {
+                // Check if the value is an image URL (ends with common image extensions)
+                if (typeof value === 'string' && value.match(/\.(jpeg|jpg|png|gif|webp|bmp)$/i)) {
+                    return `
+                        <p><strong>${key}:</strong></p>
+                        <img src="${value}" alt="${key}" style="max-width: 100%; height: auto;" />
+                    `;
+                }
+                return `<p><strong>${key}:</strong> ${value}</p>`;
+            }).join('');
+        } else {
+            formattedInfo = `<p><strong>Information:</strong> ${info}</p>`;
         }
-
-        const modalBody = document.getElementById('modalBody');
-        modalBody.innerHTML = `
-            <h5>Service Details for Request ID: ${request.id}</h5>
-            <p><strong>Name:</strong> ${request.name}</p>
-            <p><strong>Status:</strong> ${request.status}</p>
-            <p><strong>Type:</strong> ${request.type}</p>
-            ${formattedInfo}
-            <p><strong>Date Accepted:</strong> ${request.dateAccepted ? new Date(request.dateAccepted).toLocaleDateString() : 'N/A'}</p>
-            <p><strong>Price:</strong> ${request.price}</p>
-            `;
-        const serviceModal = new bootstrap.Modal(document.getElementById('serviceModal'));
-        serviceModal.show();
+    } catch (e) {
+        formattedInfo = `<p><strong>Information:</strong> Invalid data format</p>`;
     }
+
+    const modalBody = document.getElementById('modalBody');
+    modalBody.innerHTML = `
+        <h5>Service Details for Request ID: ${request.id}</h5>
+        <p><strong>Name:</strong> ${request.name}</p>
+        <p><strong>Status:</strong> ${request.status}</p>
+        <p><strong>Type:</strong> ${request.type}</p>
+        ${formattedInfo}
+        <p><strong>Date Accepted:</strong> ${request.dateAccepted ? new Date(request.dateAccepted).toLocaleDateString() : 'N/A'}</p>
+        <p><strong>Price:</strong> ${request.price}</p>
+    `;
+    const serviceModal = new bootstrap.Modal(document.getElementById('serviceModal'));
+    serviceModal.show();
+}
+
 
 
     function showTracking(request) {
