@@ -72,7 +72,7 @@ $service = SQLFunction::getAllCompletedServices();
         tableBody.innerHTML = '';
 
         requestsToRender.forEach(request => {
-            if (request.alreadyFeedback == 1) {
+            if (request.feedback == null) {
                 return;
             }
             const row = `

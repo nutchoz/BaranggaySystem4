@@ -308,12 +308,12 @@ class SQLFunction
 			$mail->isSMTP();
 			$mail->Host = 'smtp.gmail.com';
 			$mail->SMTPAuth = true;
-			$mail->Username = 'jdmaster888@gmail.com';
-			$mail->Password = 'mxvj qric haou eibj';
+			$mail->Username = 'jaysonnazareno71@gmail.com';
+			$mail->Password = 'mphe gwcr iiab edpa';
 			$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 			$mail->Port = 587;
 
-			$mail->setFrom('jdmaster888@gmail.com', 'Your Name or App Name');
+			$mail->setFrom('jaysonnazareno71@gmail.com', 'Barangay Lecheria');
 			$mail->addAddress($email);
 			$mail->Subject = "Your $text Code";
 			$mail->Body = "Your $text code is: $generateCode";

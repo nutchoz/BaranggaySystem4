@@ -20,7 +20,6 @@ CREATE TABLE service (
     id INT PRIMARY KEY AUTO_INCREMENT,
     userId INT,
     userName VARCHAR(100),
-    price DECIMAL, 
     status VARCHAR(50) DEFAULT "Pending",
     name VARCHAR(50),
     type VARCHAR(50),
@@ -41,9 +40,28 @@ INSERT INTO users (verified, firstName, middleName, lastName, email, password, c
 (TRUE, 'admin', 'admin', 'admin', 'admin', 'admin', ''),
 (FALSE, 'test1', 'middle1', 'Test1', 'test1@example.com', '$2y$10$qvkBAAPra6VFouM2DWMsZOZc6I3nwv7emCn4EdKutGtMGOdszUsHu', ''),
 (TRUE, 'jd', 'pega', 'JDM', 'jdmaster888@gmail.com', '$2y$10$qvkBAAPra6VFouM2DWMsZOZc6I3nwv7emCn4EdKutGtMGOdszUsHu', ''),
-(TRUE, 'test2', 'middle2', 'Test2', 'test2@example.com', '$2y$10$qvkBAAPra6VFouM2DWMsZOZc6I3nwv7emCn4EdKutGtMGOdszUsHu', '');
-
-
+(TRUE, 'test2', 'middle2', 'Test2', 'test2@example.com', '$2y$10$qvkBAAPra6VFouM2DWMsZOZc6I3nwv7emCn4EdKutGtMGOdszUsHu', ''),
+(TRUE, 'John', 'A.', 'Doe', 'john.doe@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Jane', 'B.', 'Smith', 'jane.smith@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'Michael', 'C.', 'Brown', 'michael.brown@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Emily', 'D.', 'Johnson', 'emily.johnson@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'David', 'E.', 'Williams', 'david.williams@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Olivia', 'F.', 'Jones', 'olivia.jones@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'James', 'G.', 'Garcia', 'james.garcia@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Sophia', 'H.', 'Martinez', 'sophia.martinez@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'Chris', 'I.', 'Lee', 'chris.lee@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Ella', 'J.', 'Harris', 'ella.harris@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'Daniel', 'K.', 'Clark', 'daniel.clark@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Grace', 'L.', 'Rodriguez', 'grace.rodriguez@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'Alex', 'M.', 'Lewis', 'alex.lewis@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Lily', 'N.', 'Walker', 'lily.walker@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'Ethan', 'O.', 'Hall', 'ethan.hall@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Mia', 'P.', 'Allen', 'mia.allen@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'Liam', 'Q.', 'Young', 'liam.young@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Ava', 'R.', 'King', 'ava.king@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'Noah', 'S.', 'Wright', 'noah.wright@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(FALSE, 'Isabella', 'T.', 'Scott', 'isabella.scott@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
+(TRUE, 'Jayson', 'Nazareno', 'UTOT', 'jayson@gmail.com', '$2y$10$qvkBAAPra6VFouM2DWMsZOZc6I3nwv7emCn4EdKutGtMGOdszUsHu', '');
 -- USE baranggaySystem;
 
 -- SELECT * FROM users WHERE verified = FALSE AND code = '';

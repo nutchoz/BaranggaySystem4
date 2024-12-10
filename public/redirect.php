@@ -140,69 +140,111 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	} elseif ($type === "baranggay-clearance") {
 		$fullName = $_POST["fullName"];
 		$address = $_POST["address"];
-		$contactNumber = $_POST["contactNumber"];
+		$age = $_POST["age"];
+		$birthDate = $_POST["birthDate"];
+		$civilStatus = $_POST["civilStatus"];
 		$purpose = $_POST["purpose"];
+		$contactNumber = $_POST["contactNumber"];
+		$periodResidence = $_POST["periodResidence"];
 		$price = $_POST["price"];
-		$serviceType = $_POST["serviceType"];
+	
+		$uploadFolder = 'uploads/';
 
-		// Application
-
-		if (isset($_FILES['idProof']) && $_FILES['idProof']['error'] === UPLOAD_ERR_OK) {
-			$idProof = $_FILES['idProof'];
-
-			$fileTmpPath = $idProof['tmp_name'];
-			$fileName = $idProof['name'];
-			$fileType = $idProof['type'];
-			$fileSize = $idProof['size'];
-
-			$allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
-			if (!in_array($fileType, $allowedMimeTypes)) {
-				echo "Invalid file type. Only images are allowed.";
-				exit;
-			}
-			$uploadFolder = 'uploads/';
-			$newFilePath = $uploadFolder . basename($fileName);
-			if (!move_uploaded_file($fileTmpPath, $newFilePath)) {
-				echo "Error uploading the ID Proof file.";
+		// Handle Proof of Residency Upload
+		if (isset($_FILES['proofResidency']) && $_FILES['proofResidency']['error'] === UPLOAD_ERR_OK) {
+			$proofResidency = $_FILES['proofResidency'];
+			$fileTmpPath = $proofResidency['tmp_name'];
+			$fileName = $proofResidency['name'];
+			$fileType = $proofResidency['type'];
+	
+			// $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+			// if (!in_array($fileType, $allowedMimeTypes)) {
+			// 	$_SESSION['error'] = "Invalid file type for proof of residency. Only images are allowed.";
+			// 	header("Location: dashboard.php");
+			// 	exit;
+			// }
+	
+			$proofResidencyPath = $uploadFolder . basename($fileName);
+			if (!move_uploaded_file($fileTmpPath, $proofResidencyPath)) {
+				$_SESSION['error'] = "Error uploading the proof of residency file.";
+				header("Location: dashboard.php");
 				exit;
 			}
 		} else {
-			echo "Error with file upload.";
+			$_SESSION['error'] = "Error with proof of residency file upload.";
+			header("Location: dashboard.php");
 			exit;
 		}
-
+	
+		// Handle ID Proof Upload
+		// if (isset($_FILES['idProof']) && $_FILES['idProof']['error'] === UPLOAD_ERR_OK) {
+		// 	$idProof = $_FILES['idProof'];
+		// 	$fileTmpPath = $idProof['tmp_name'];
+		// 	$fileName = $idProof['name'];
+		// 	$fileType = $idProof['type'];
+	
+		// 	// $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+		// 	// if (!in_array($fileType, $allowedMimeTypes)) {
+		// 	// 	$_SESSION['error'] = "Invalid file type for ID Proof. Only images are allowed.";
+		// 	// 	header("Location: dashboard.php");
+		// 	// 	exit;
+		// 	// }
+	
+		// 	// $idProofPath = $uploadFolder . basename($fileName);
+		// 	// if (!move_uploaded_file($fileTmpPath, $idProofPath)) {
+		// 	// 	$_SESSION['error'] = "Error uploading the ID Proof file.";
+		// 	// 	header("Location: dashboard.php");
+		// 	// 	exit;
+		// 	// }
+		// 	$newFilePath = $uploadFolder . basename($fileName);
+		// 	if (!move_uploaded_file($fileTmpPath, $newFilePath)) {
+		// 		echo "Error uploading the ID Proof file.";
+		// 		exit;
+		// 	}
+		// } else {
+		// 	$_SESSION['error'] = "Error with ID Proof file upload.";
+		// 	header("Location: dashboard.php");
+		// 	exit;
+		// }
+	
 		$serviceData = [
 			"fullName" => $fullName,
 			"address" => $address,
-			"contactNumber" => $contactNumber,
+			"age" => $age,
+			"birthDate" => $birthDate,
+			"civilStatus" => $civilStatus,
 			"purpose" => $purpose,
-			"serviceType" => $serviceType,
-			"idProof" => $newFilePath
+			"contactNumber" => $contactNumber,
+			"periodResidence" => $periodResidence,
+			"proofResidency" => $proofResidencyPath,
 		];
-
+	
 		$database = new MySQLDatabase();
 		$params = [
 			$serviceData["fullName"],
 			$serviceData["address"],
-			$serviceData["contactNumber"],
+			$serviceData["age"],
+			$serviceData["birthDate"],
+			$serviceData["civilStatus"],
 			$serviceData["purpose"],
-			$serviceData["serviceType"],
-			$serviceData["idProof"]
+			$serviceData["contactNumber"],
+			$serviceData["periodResidence"],
+			$serviceData["proofResidency"],
 		];
-
+	
 		$database->prepexec(
-			"INSERT INTO service (userId, userName, name, type, price, information, serviceType) VALUES (?, ?, ?, ?, ?, ?, ?)",
+			"INSERT INTO service (userId, userName, name, type, information) VALUES (?, ?, ?, ?, ?)",
 			$_SESSION['account']['id'],
 			$_SESSION['account']['firstName'] . " " . $_SESSION['account']['middleName'] . " " . $_SESSION['account']['lastName'],
 			"Baranggay Clearance",
 			"Application",
-			$price,
 			json_encode($serviceData),
-			$serviceData["serviceType"]
 		);
+	
 		header("Location: dashboard.php?on=allOrder");
 		exit;
 	}
+	
 
 	// elseif ($type === 'register')
 	// {

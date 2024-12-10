@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
 $username = 'root';
-$password = 'admin';
+$password = '09914819981';
 $dbname = 'baranggaySystem';
 
 $conn = new mysqli($host, $username, $password, $dbname);

@@ -76,12 +76,13 @@ $accounts = SQLFunction::getAllAccounts();
     });
 
     document.getElementById('sortDateBtn').addEventListener('click', function () {
+        // alert("TEST");
         const sortedRequests = [...requests].sort((a, b) => {
             const dateA = new Date(a.date);
             const dateB = new Date(b.date);
             return sortAscending ? dateA - dateB : dateB - dateA;
         });
-        sortAscending = !sortAscending;
+        sortAscending = sortAscending;
         renderTable(sortedRequests);
     });
 

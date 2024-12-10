@@ -1,6 +1,6 @@
 <?php
 require_once("../includes/initialize.php");
-createHeader("Baranggay System", [
+createHeader("Barangay System", [
 	"css/main",
 	// "css/dashboard",
 	// "css/register",

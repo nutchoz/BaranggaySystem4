@@ -16,17 +16,16 @@
             referrerpolicy="no-referrer-when-downgrade"></iframe>
         <div class="about-description">
             <b>
-                <h1>BARANGGAY SHIT</h1>
+                <div style="font-size: 16px !important">Our system, the Barangay Lecheria Document Request System, is a web-based digital platform designed to streamline and automate the process of requesting, managing, and issuing essential barangay documents, such as IDs, certificates, cedulas, and clearances. By enabling residents to submit requests online, the system eliminates the need for in-person visits, reduces long queues, and minimizes administrative burdens on barangay staff. The platform includes features such as user registration, real-time status updates, and automated notifications to ensure transparency and efficiency.</div>
             </b>
             <br>
-            This is also shit
             <br><br><br>
             <a class="about-button" href="dashboard.php?on=service">GET STARTED</a>
             <br><br><br>
             <b>
                 <h3>CONTACT US</h3>
             </b>
-            <a href=""><i>example@example.com</i></a>
+            <a href=""><i>Barangaylecheria@gmail.com</i></a>
         </div>
     </div>
 

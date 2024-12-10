@@ -21,7 +21,7 @@
                 <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
                     alt="Baranggay Clearance">
                 <div class="card-body service-items">
-                    <h5 class="card-title">Baranggay Clearance</h5>
+                    <h5 class="card-title">Barangay ID</h5>
                     <input type="hidden" value="baranggayClearance">
                     <p class="card-text">This service provides official clearance from the barangay.</p>
                     <div class="d-flex justify-content-center gap-2 buttons-service">
@@ -30,13 +30,13 @@
                 </div>
             </div>
         </div>
-        <!-- Service Item 3 -->
+
         <div class="col">
             <div class="card h-100 text-center">
                 <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
                     alt="Baranggay Clearance">
                 <div class="card-body service-items">
-                    <h5 class="card-title">Baranggay Clearance</h5>
+                    <h5 class="card-title">Barangay Cedula</h5>
                     <input type="hidden" value="baranggayClearance">
                     <p class="card-text">This service provides official clearance from the barangay.</p>
                     <div class="d-flex justify-content-center gap-2 buttons-service">
@@ -45,13 +45,13 @@
                 </div>
             </div>
         </div>
-        <!-- Service Item 4 -->
+
         <div class="col">
             <div class="card h-100 text-center">
                 <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
                     alt="Baranggay Clearance">
                 <div class="card-body service-items">
-                    <h5 class="card-title">Baranggay Clearance</h5>
+                    <h5 class="card-title">Barangay Certificate</h5>
                     <input type="hidden" value="baranggayClearance">
                     <p class="card-text">This service provides official clearance from the barangay.</p>
                     <div class="d-flex justify-content-center gap-2 buttons-service">
@@ -60,37 +60,7 @@
                 </div>
             </div>
         </div>
-        <!-- Service Item 5 -->
-        <div class="col">
-            <div class="card h-100 text-center">
-                <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
-                    alt="Baranggay Clearance">
-                <div class="card-body service-items">
-                    <h5 class="card-title">Baranggay Clearance</h5>
-                    <input type="hidden" value="baranggayClearance">
-                    <p class="card-text">This service provides official clearance from the barangay.</p>
-                    <div class="d-flex justify-content-center gap-2 buttons-service">
-                        <button class="btn btn-success take-service">Take this service!</button>
-                    </div>
-                </div>
             </div>
-        </div>
-        <!-- Service Item 6 -->
-        <div class="col">
-            <div class="card h-100 text-center">
-                <img src="../assets/baranggayClearance.png" class="card-img-top service-image"
-                    alt="Baranggay Clearance">
-                <div class="card-body service-items">
-                    <h5 class="card-title">Baranggay Clearance</h5>
-                    <input type="hidden" value="baranggayClearance">
-                    <p class="card-text">This service provides official clearance from the barangay.</p>
-                    <div class="d-flex justify-content-center gap-2 buttons-service">
-                        <button class="btn btn-success take-service">Take this service!</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 

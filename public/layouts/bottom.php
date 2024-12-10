@@ -2,17 +2,13 @@
     <div class="container">
         <div class="row">
             <!-- About Us -->
-            <div class="col-md-4">
-                <h5>About Us</h5>
-                <p>This is shit.</p>
-            </div>
             <!-- Contact Us -->
             <div class="col-md-4">
                 <h5>Contact Us</h5>
                 <ul class="list-unstyled">
-                    <li><strong>Email:</strong> support@example.com</li>
-                    <li><strong>Phone:</strong> +1 234 567 890</li>
-                    <li><strong>Address:</strong> 1234 Example Street, City, Country</li>
+                    <li><strong>Email:</strong> Brgylecheria@gmail.com</li>
+                    <li><strong>Phone:</strong> 09914819981</li>
+                    <li><strong>Address:</strong> Barangay Lecheria,Calamba city, Phillipines</li>
                 </ul>
             </div>
             <!-- Social Media Links -->

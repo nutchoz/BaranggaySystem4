@@ -2,7 +2,7 @@
 	<div class="left">
 		<img src="assets/logo.png" style="height: calc(100% - 10px); width: auto; margin-top: 5px; margin-left: 20px;
 				backdrop-filter: drop-shadow(0 5px 20px black);" />
-		<div class="left-title">BARANGGAY LECHERIA</div>
+		<div class="left-title">BARANGAY LECHERIA</div>
 	</div>
 	<div class="right">
 		<a class="navigation-link" href="dashboard.php?on=home">HOME</a>
