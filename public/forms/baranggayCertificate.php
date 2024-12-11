@@ -4,11 +4,11 @@
             <div class="col-md-8 col-lg-6" style="min-width: 500px">
                 <div class="card shadow-lg position-relative">
                     <div class="card-body">
-                        <h2 class="text-center mb-4 service-form-title text-success">BARANGGAY CLEARANCE APPLICATION</h2>
+                        <h2 class="text-center mb-4 service-form-title text-success">BARANGGAY CERTIFICATE APPLICATION</h2>
 
                         <!-- Hidden Input Fields -->
                         <input type="hidden" name="type" value="baranggay-clearance">
-                        <input type="hidden" name="bg-name" value="Baranggay Clearance">
+                        <input type="hidden" name="bg-name" value="Baranggay Certificate">
                         <input type="hidden" name="price" value="100">
                         <input type="hidden" name="serviceType" value="1">
 
@@ -50,7 +50,7 @@
 
                         <!-- Purpose of Clearance -->
                         <div class="form-group mb-3">
-                            <label for="purpose" class="form-label">Purpose of Clearance:</label>
+                            <label for="purpose" class="form-label">Purpose of Certificate:</label>
                             <textarea class="form-control" id="purpose" name="purpose" placeholder="Enter the purpose of clearance" rows="4" required></textarea>
                         </div>
 

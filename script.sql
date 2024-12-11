@@ -39,7 +39,7 @@ CREATE TABLE service (
 INSERT INTO users (verified, firstName, middleName, lastName, email, password, code) VALUES
 (TRUE, 'admin', 'admin', 'admin', 'admin', 'admin', ''),
 (FALSE, 'test1', 'middle1', 'Test1', 'test1@example.com', '$2y$10$qvkBAAPra6VFouM2DWMsZOZc6I3nwv7emCn4EdKutGtMGOdszUsHu', ''),
-(TRUE, 'jd', 'pega', 'JDM', 'jdmaster888@gmail.com', '$2y$10$qvkBAAPra6VFouM2DWMsZOZc6I3nwv7emCn4EdKutGtMGOdszUsHu', ''),
+(TRUE, 'jd', 'pega', 'JDM', 'joymaster888@gmail.com', '$2y$10$qvkBAAPra6VFouM2DWMsZOZc6I3nwv7emCn4EdKutGtMGOdszUsHu', ''),
 (TRUE, 'test2', 'middle2', 'Test2', 'test2@example.com', '$2y$10$qvkBAAPra6VFouM2DWMsZOZc6I3nwv7emCn4EdKutGtMGOdszUsHu', ''),
 (TRUE, 'John', 'A.', 'Doe', 'john.doe@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),
 (FALSE, 'Jane', 'B.', 'Smith', 'jane.smith@example.com', '$2y$10$eW5HMCW6GEXqlLnQwWQxKeJcDEOTbzVPeN2.n5.Gjeyav9EYC0cyK', ''),

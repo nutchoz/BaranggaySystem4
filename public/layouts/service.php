@@ -22,8 +22,8 @@
                     alt="Baranggay Clearance">
                 <div class="card-body service-items">
                     <h5 class="card-title">Barangay ID</h5>
-                    <input type="hidden" value="baranggayClearance">
-                    <p class="card-text">This service provides official clearance from the barangay.</p>
+                    <input type="hidden" value="baranggayId">
+                    <p class="card-text">This service provides official Barangay id from the barangay.</p>
                     <div class="d-flex justify-content-center gap-2 buttons-service">
                         <button class="btn btn-success take-service">Take this service!</button>
                     </div>
@@ -37,8 +37,8 @@
                     alt="Baranggay Clearance">
                 <div class="card-body service-items">
                     <h5 class="card-title">Barangay Cedula</h5>
-                    <input type="hidden" value="baranggayClearance">
-                    <p class="card-text">This service provides official clearance from the barangay.</p>
+                    <input type="hidden" value="baranggayCedula">
+                    <p class="card-text">This service provides official Cedula from the barangay.</p>
                     <div class="d-flex justify-content-center gap-2 buttons-service">
                         <button class="btn btn-success take-service">Take this service!</button>
                     </div>
@@ -52,8 +52,8 @@
                     alt="Baranggay Clearance">
                 <div class="card-body service-items">
                     <h5 class="card-title">Barangay Certificate</h5>
-                    <input type="hidden" value="baranggayClearance">
-                    <p class="card-text">This service provides official clearance from the barangay.</p>
+                    <input type="hidden" value="baranggayCertificate">
+                    <p class="card-text">This service provides official Certificate from the barangay.</p>
                     <div class="d-flex justify-content-center gap-2 buttons-service">
                         <button class="btn btn-success take-service">Take this service!</button>
                     </div>
@@ -88,7 +88,6 @@
 
             var form = document.getElementById('dynamicForm');
             getForm(serviceTarget, form);
-
             modal.style.display = 'flex';
         });
     });

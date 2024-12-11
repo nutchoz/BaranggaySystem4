@@ -147,7 +147,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$contactNumber = $_POST["contactNumber"];
 		$periodResidence = $_POST["periodResidence"];
 		$price = $_POST["price"];
-	
+		$bgName = $_POST["bg-name"];
+
 		$uploadFolder = 'uploads/';
 
 		// Handle Proof of Residency Upload
@@ -236,7 +237,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			"INSERT INTO service (userId, userName, name, type, information) VALUES (?, ?, ?, ?, ?)",
 			$_SESSION['account']['id'],
 			$_SESSION['account']['firstName'] . " " . $_SESSION['account']['middleName'] . " " . $_SESSION['account']['lastName'],
-			"Baranggay Clearance",
+			$bgName,
 			"Application",
 			json_encode($serviceData),
 		);
